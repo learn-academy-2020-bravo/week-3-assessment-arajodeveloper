@@ -7,19 +7,19 @@
 class App extends Component{
   constructor(){
     super()
-    // 1.
+    // 1.this creates the state of the component with a blank string for userInput
     this.state = {
       userInput: "",
     }
   }
 
   robot = (e) => {
-    // 2.
+    // 2. when the user inputs, we update the state with the new input
     this.setState({ userInput: e.target.value })
   }
 
   render(){
-    // 3.
+    // 3. it is rendering what user inputs using destructuring method.
     let { userInput } = this.state
 
     return(
@@ -28,16 +28,16 @@ class App extends Component{
 
         <h3>Enter text here:</h3>
         <input
-          {/* 4. */}
+          {/* when user changes anything in the input, we call this.robot method */}
           onChange={ this.robot }
-          {/* 5. */}
+          {/* show the userInput (from this.state) in this input box */}
           value={ userInput }
         />
 
         <div>
-          {/* 6. */}
+          {/* add a good robot component */}
           <GoodRobot
-            {/* 7. */}
+            {/* pass the userInput from this.state as a prop to the good robot */}
             userInput={ userInput }
           />
           <BadRobot
@@ -58,14 +58,14 @@ export default App
 class GoodRobot extends Component{
   render(){
     return(
-      // 8.
+      // 8. jsx template for good robot
       <div>
         <h3>Good Robot</h3>
-        {/* 9. */}
+        {/* show userInput (from props) in an h4 element  */}
         <h4>I hear you saying { this.props.userInput }. Is that correct?</h4>
       </div>
     )
   }
 }
-// 10.
+// 10. Each js file must have export default matching the file name to make the code work
 export default GoodRobot
